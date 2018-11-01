@@ -59,11 +59,11 @@ public class GameSystem
         }
 
         //交換するカードを選択して捨てる (n回<6)
-        Select(card);
+        //Select(card);
 
         //捨てた分新しいカードを引く
-        Card card = GetNewCard(); //⑥
-        playerCards.Add(card); //⑦
+        Card newCard = GetNewCard(); //⑥
+        playerCards.Add(newCard); //⑦
 
         //役を判定する
         Judge();
