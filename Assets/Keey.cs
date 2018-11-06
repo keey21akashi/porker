@@ -42,7 +42,7 @@ public class Keey : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Y))
             {
                 Shuffle();//シャッフルして表示
-                ShowCards();
+                //ShowCards();
                 shuffleTurn = false;
             }
         }
@@ -142,15 +142,15 @@ public class Keey : MonoBehaviour
 
     }
 
-    private void ShowCards()//1回目のカードを表示
-    {
-        print("[" + cards[rank1] + "],["
-              + cards[rank2] + "],["
-              + cards[rank3] + "], ["
-              + cards[rank4] + "],["
-              + cards[rank5] + "]");
+    //private void ShowCards()//1回目のカードを表示
+    //{
+    //    print("[" + cards[rank1] + "],["
+    //          + cards[rank2] + "],["
+    //          + cards[rank3] + "], ["
+    //          + cards[rank4] + "],["
+    //          + cards[rank5] + "]");
 
-        print("何番目のカードを入れ替えますか？　1/2/3/4/5");
-        selectTurn = true;
-    }
+    //    print("何番目のカードを入れ替えますか？　1/2/3/4/5");
+    //    selectTurn = true;
+    //}
 }

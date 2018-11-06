@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 //ここはゲームのロジックのみを作る
 //カードの配布、シャッフル、役の判定、viewへの表示を行う。
-public class GameSystem
+public class GameSystem : MonoBehaviour
 {
 
     public Image[] images; //UnityのUI上のImageの場所
@@ -19,17 +19,16 @@ public class GameSystem
     //廃棄したカード
     public List<Card> disCards = new List<Card>();
 
-
     public void Init()
     {
         //allCards に全てのCardを格納
-        for (int i = 0; i < 13; i++)
+        for (int i = 1; i < 14; i++)
         {
             for (int j = 0; j < 4; j++)
             {
                 Card card = new Card((SuitEnum.Suit)Enum.ToObject(typeof(SuitEnum.Suit), j),i );
                 allCards.Add(card);
-
+                print(j + "," + i);
                 //`(SuitEnum.Suit)Enum.ToObject(typeof(SuitEnum.Suit), j)`でSuitをindexから呼び出す
             }
         }
@@ -57,6 +56,11 @@ public class GameSystem
             Card card = GetNewCard(); //②
             playerCards.Add(card); //③
         }
+        foreach(Card c in playerCards){
+            print(c.suit + "," + c.rank);
+        }
+
+
 
         //交換するカードを選択して捨てる (n回<6)
         //Select(card);
@@ -66,7 +70,8 @@ public class GameSystem
         playerCards.Add(newCard); //⑦
 
         //役を判定する
-        Judge();
+        Judgement jd = GetComponent<Judgement>();
+        jd.Judge(playerCards);
 
         //int index = 0;
         //foreach (Card card in playerCards)
@@ -79,11 +84,6 @@ public class GameSystem
         //playerCards[3].RingDustSound();
         //playerCards.Remove(3);
 
-    }
-
-    private void Judge()
-    {
-        throw new NotImplementedException();
     }
 
     private void Select(Card card)
