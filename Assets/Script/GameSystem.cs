@@ -21,21 +21,23 @@ public class GameSystem : MonoBehaviour
 
     string result;
 
+
     public void Init()
     {
         //allCards に全てのCardを格納
-        for (int i = 1; i < 14; i++)
+        for (int i = 0; i < 13; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-                Card card = new Card((SuitEnum.Suit)Enum.ToObject(typeof(SuitEnum.Suit), j),i );
+                Card card = new Card((SuitEnum.Suit)Enum.ToObject(typeof(SuitEnum.Suit), j),
+                                     (RankEnum.Rank)Enum.ToObject(typeof(RankEnum.Rank), i));
                 allCards.Add(card);
                 print(j + "," + i);
                 //`(SuitEnum.Suit)Enum.ToObject(typeof(SuitEnum.Suit), j)`でSuitをindexから呼び出す
             }
         }
     }
-
+    
     public Card GetNewCard()
     {
         //山札に残ってるものから乱数を取る
@@ -51,9 +53,15 @@ public class GameSystem : MonoBehaviour
         foreach(Card c in cards){
             print(c.suit + "," + c.rank);
         }
-
+        
     }
-
+    
+    private void Judge()
+    {
+        Judgement jd = GetComponent<Judgement>();
+        result = jd.Judge(playerCards);
+        print(result);
+    }
 
     public void Start()
     {
@@ -74,12 +82,10 @@ public class GameSystem : MonoBehaviour
         /*
          * Card newCard = GetNewCard(); //⑥
         playerCards.Add(newCard); //⑦
+        Print(playerCards);
         */
-
         //役を判定する
-        Judgement jd = GetComponent<Judgement>();
-        result = jd.Judge(playerCards);
-        print(result);
+        Judge();
 
         //int index = 0;
         //foreach (Card card in playerCards)

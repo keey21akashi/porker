@@ -28,14 +28,14 @@ public class Judgement : MonoBehaviour
         if (IsFlush(cards) && IsStraight(cards))
         {
 
-                for (int i = 2; i <= 9; i++)
+                for (int i = 0; i <= 7; i++)
                 {//2～9までの数字が含まれていたらNG
                     
                     cards.ForEach((Card obj) =>
                     {
                         if(obj.rank.Equals(i)){
                             isR = false;
-                            //breakしたい
+                            //7以下はbreak にしたい
                         } 
                     });
                 }
@@ -62,6 +62,7 @@ public class Judgement : MonoBehaviour
 
     static bool IsFlush(List<Card> cards)
     {
+        //５枚全て同じsuit
         foreach (char suit in Suits.ToCharArray())
         {//あるスーツの文字を切り取って
             if (cards.Length - cards.Replace(suit.ToString(), "").Length == 5) return true;

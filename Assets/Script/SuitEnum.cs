@@ -7,8 +7,8 @@ public static class SuitEnum
 {
     public enum Suit
     {
-        CLOVER, //0
-        DIRE, //1
+        CLUB, //0
+        DIAMOND, //1
         HART, //2
         SPADE //3
     }

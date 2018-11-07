@@ -7,10 +7,10 @@ public class Card : MonoBehaviour
 {
     //`ClassName.EnumName`がsuitの型名
     public SuitEnum.Suit suit;
-    public int rank;
+    public RankEnum.Rank rank;
 
     //コンストラクター
-    public Card(SuitEnum.Suit _suit, int _rank)
+    public Card(SuitEnum.Suit _suit, RankEnum.Rank _rank)
     {
         this.suit = _suit;
         this.rank = _rank;
