@@ -19,6 +19,8 @@ public class GameSystem : MonoBehaviour
     //廃棄したカード
     public List<Card> disCards = new List<Card>();
 
+    string result;
+
     public void Init()
     {
         //allCards に全てのCardを格納
@@ -66,12 +68,15 @@ public class GameSystem : MonoBehaviour
         //Select(card);
 
         //捨てた分新しいカードを引く
-        Card newCard = GetNewCard(); //⑥
+        /*
+         * Card newCard = GetNewCard(); //⑥
         playerCards.Add(newCard); //⑦
+        */
 
         //役を判定する
         Judgement jd = GetComponent<Judgement>();
-        jd.Judge(playerCards);
+        result = jd.Judge(playerCards);
+        print(result);
 
         //int index = 0;
         //foreach (Card card in playerCards)
