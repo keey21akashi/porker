@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Judgement : MonoBehaviour {
+public class Judgement : MonoBehaviour
+{
+    const string Ranks = "A23456789TJQKA";
+    const string Suits = "SDHC";
 
-    public string Judge(List<Card> playerCards){
-   
+    public string Judge(List<Card> playerCards)
+    {
+
         if (IsRoyalStraightFlush(playerCards)) return "Royal straight flush";
         else if (IsStraightFlush(playerCards)) return "Straight flush";
         else if (Is4cards(playerCards)) return "Four of a kind";
@@ -20,15 +24,25 @@ public class Judgement : MonoBehaviour {
 
     static bool IsRoyalStraightFlush(List<Card> cards)
     {
+        bool isR = false; 
         if (IsFlush(cards) && IsStraight(cards))
         {
-            for (int i = 2; i <= 9; i++)
-            {//2～9までの数字が含まれていたらNG
-                if (cards.IndexOf(i.ToString()) != -1) return false;
-            }
-            return true;
+
+                for (int i = 2; i <= 9; i++)
+                {//2～9までの数字が含まれていたらNG
+                    
+                    cards.ForEach((Card obj) =>
+                    {
+                        if(obj.rank.Equals(i)){
+                            isR = false;
+                            //breakしたい
+                        } 
+                    });
+                }
+            isR = true;
+            return isR;
         }
-        return false;
+        return isR;
     }
 
     static bool IsStraightFlush(List<Card> cards)

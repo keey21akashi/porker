@@ -46,7 +46,13 @@ public class GameSystem : MonoBehaviour
         allCards.Remove(card);
         return card;
     }
+    private static void Print(List<Card> cards)
+    {
+        foreach(Card c in cards){
+            print(c.suit + "," + c.rank);
+        }
 
+    }
 
 
     public void Start()
@@ -58,10 +64,7 @@ public class GameSystem : MonoBehaviour
             Card card = GetNewCard(); //②
             playerCards.Add(card); //③
         }
-        foreach(Card c in playerCards){
-            print(c.suit + "," + c.rank);
-        }
-
+        Print(playerCards);
 
 
         //交換するカードを選択して捨てる (n回<6)
